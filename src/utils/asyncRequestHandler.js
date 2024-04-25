@@ -1,4 +1,6 @@
-const asyncHandler = (requestHandler) => {(req, res, next) => 
+// always return highr order function otherwisw error -> requires a callback function but got a [object Undefined]
+const asyncHandler = (requestHandler) => {
+    return (req, res, next) => 
         //next is used to pass the error to the next middleware
     {  
         Promise

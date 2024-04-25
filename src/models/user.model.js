@@ -69,15 +69,18 @@ const userSchema = new Schema(
     }
 )
 
-// This is a middleware type which means do somthing before(pre) saving(save) a file
+// This is a existing middleware type which means do somthing before(pre) saving(save) a file
 // Keyword async is used as passoword hasing bcz it takes time in encrpt and decrypt.
 //Here the (next) is used to tell the program to move to next middleware
 
 userSchema.pre("save" , async function (next) {
     if(!this.isModified("password")) return next(); // if password is not modified then return next
     this.password = bcrypt.hash(this.password,10)//it can be 8,9,10,12 upto 100 etc
+    //bcrypt is a library which is used to encrypt the password
+    //bcrypt.hash(password,salt)
+    //salt is used to make the password more secure
 }) 
- // dont use fat arrow function here as we cant use this keyword in this so how can we take reference form our schema without using this keyword
+ // dont use fat arrow function here as we cant use (this) keyword in this so how can we take reference form our schema without using this keyword
 
 
 //we have created a custom method that compares user() pssword and the encrypted pass
@@ -88,7 +91,7 @@ userSchema.methods.isPasswordCorrect = async function (password){
 //Generate Access token method
 userSchema.methods.generateAccessToken = function(){
   return jwt.sign(// this sign method is used to generate token
-  //hover on .sign() method to know more
+  //hover on .sign() method to know more about the syntax of this sign method
         {
             _id:this._id,
             // _id is the id of the user
@@ -96,14 +99,14 @@ userSchema.methods.generateAccessToken = function(){
             username:this.username,
             fullName : this.fullName
         },
-        process.env.ACCESS_TOKEN_SECRET,
+        process.env.ACCESS_TOKEN_SECRET, //2 argument
         {
-            expiresIn: process.env.ACCESS_TOKEN_EXPIRY
+            expiresIn: process.env.ACCESS_TOKEN_EXPIRY //3 argument
         }
     ) 
 }
 
-//Generate Refresh token method
+//Generate Refresh token method || mostly similar to the above code
 userSchema.methods.generateRefreshToken = function(){
     return jwt.sign(// this sign method is used to generate token
           {

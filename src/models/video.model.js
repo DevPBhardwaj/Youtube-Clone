@@ -1,7 +1,8 @@
 import mongoose ,{Schema} from "mongoose";
-//Aggreagation Pipeline
+
 import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 //this is used for writing aggregate queries in mongodb 
+//Aggreagation Pipeline
 
 const videoSchema = new Schema(
     {

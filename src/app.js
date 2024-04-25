@@ -32,4 +32,21 @@ app.use(express.static("public"))
 //for cookies 
 app.use(cookieParser())
 
+
+
+//routes import 
+import userRouter from './routes/user.routes.js' //try to add .js in end
+
+//routes declaration
+//here we are using middleware as we declared the routes in userRouter
+app.use("/api/v1/users", userRouter)  
+ //1 argument is users is the prefix for all the routes in userRouter
+ //2 argument is which router you want to activate
+//how this work is that when we are making a request to /users , it will give control to userRouter then 
+// it passes the control to user.routes.js and there we will tell him on which route he has to go on
+
+
+
+
+
 export default app;
