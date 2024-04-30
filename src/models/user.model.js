@@ -75,7 +75,7 @@ const userSchema = new Schema(
 
 userSchema.pre("save" , async function (next) {
     if(!this.isModified("password")) return next(); // if password is not modified then return next
-    this.password = bcrypt.hash(this.password,10)//it can be 8,9,10,12 upto 100 etc
+    this.password = await bcrypt.hash(this.password,10)//it can be 8,9,10,12 upto 100 etc
     //bcrypt is a library which is used to encrypt the password
     //bcrypt.hash(password,salt)
     //salt is used to make the password more secure

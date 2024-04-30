@@ -14,6 +14,6 @@ const storage = multer.diskStorage({ // storage is diskStorage we haven't use me
     }
   })
   
-  const upload = multer({ 
-    storage: storage , 
+  export const upload = multer({ 
+    storage,
 })
