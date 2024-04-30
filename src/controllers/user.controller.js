@@ -14,6 +14,7 @@ const registerUser = asyncHandler ( async (req,res)=>{  // we gave this async he
     //     message:"Ok"         before writing the below code we can check this left code on postman whether its working or not *take care of spaces while writing url in Postman
     // })
 
+    
     // logic building for user registration / algorithms
 
     // 1-> get user details from frontend
