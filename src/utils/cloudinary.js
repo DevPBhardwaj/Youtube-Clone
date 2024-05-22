@@ -29,7 +29,9 @@ const uploadOnCloudinary = async (localFilePath) => {
         // or just the response.url we are just returning the whole response here
         // and consoling the response.url
 
-        console.log("File is uploaded successfully on Cloudinary", response.url)
+        // console.log("File is uploaded successfully on Cloudinary", response.url)
+        //it will be romoved once uploaded synchronusly
+        fs.unlinkSync(localFilePath);
         return response;
 
     } catch(error){

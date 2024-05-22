@@ -7,7 +7,6 @@ class ApiError extends Error{
         statusCode,
         message="Something went wrong",
         errors =[],
-        statck =""
     ){
         super(message) //It is always called whenever we override a function
         //Sets several properties of the ApiError instance
